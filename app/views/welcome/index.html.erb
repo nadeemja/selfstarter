@@ -1,0 +1,39 @@
+<h1>Products</h1>
+<table id="products">
+  <% @products.each do |p| -%>
+    <tr>
+      <td><%= p.name %></td>
+      <td>$<%= p.price %></td>
+      <td><%= link_to "Buy #{p.name}", new_transaction_path(:product_id => p.id) %></td>
+    </tr>
+  <% end -%>
+</table>
+
+<% if @transactions %>
+  <h1>Transactions</h1>
+  <table id="transactions">
+    <%= @transactions.each do |t| -%>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.amount %></td>
+        <td><%= t.status.capitalize %></td>
+      </tr>
+    <% end -%>
+  </table>
+<% end %>
+
+<dl>
+  <% if current_user.has_payment_info? -%>
+      <dt>Name</dt>
+      <dd><%= current_user.first_name %></dd>
+      <dt>Email</dt>
+      <dd><%= current_user.email %></dd>
+      <dt>Credit Card</dt>
+      <dd><%= current_user.credit_cards.first.masked_number%></dd>
+      <dt><%= link_to "Edit Your Payment Info", edit_customer_path(current_user.id) %></dt>
+  <% else -%>
+    <dt><%= link_to "Setup Your Payment Info", new_customer_path  %></dt>
+  <% end %>
+    <dt>Last Logged In</dt>
+    <dd><%= current_user.last_sign_in_at %></dd>
+</dl>

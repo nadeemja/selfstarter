@@ -4,6 +4,7 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 gem 'json', '~> 1.7.7'
+gem 'devise'
 
 group :development do
   gem 'sqlite3'
@@ -25,7 +26,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
-  gem 'shoulda'
+  #gem 'shoulda'
 end
 
 # jQuery
