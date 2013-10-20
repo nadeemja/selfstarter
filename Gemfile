@@ -4,10 +4,11 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 gem 'json', '~> 1.7.7'
-gem "devise", :git => "http://github.com/plataformatec/devise.git"
+gem "devise"
 gem 'execjs'
 gem 'therubyracer'
 gem 'braintree'
+gem 'mysql2'
 
 group :development do
   gem 'sqlite3'
