@@ -10,6 +10,6 @@ class WelcomeController < ApplicationController
       end
     end
 
-    @products = Product.all
+    @payment_options = PaymentOption.all
   end
 end

@@ -26,9 +26,9 @@
     <dt>Expiration Date</dt>
     <dd><%= @credit_card.expiration_date %></dd>
   </dl>
-  <%= hidden_field_tag :tr_data, Braintree::TransparentRedirect.transaction_data(:redirect_url => confirm_transaction_url(:product_id => @product.id),
+  <%= hidden_field_tag :tr_data, Braintree::TransparentRedirect.transaction_data(:redirect_url => confirm_transaction_url(:product_id => @payment_option.id),
                                                                                  :transaction => {
-                                                                                   :amount => @product.price,
+                                                                                   :amount => @payment_option.amount,
                                                                                    :type => "sale",
                                                                                    :customer_id => current_user.braintree_customer_id
                                                                                   }) %>

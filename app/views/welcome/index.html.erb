@@ -1,16 +1,16 @@
-<h1>Products</h1>
+<h3>Products</h1>
 <table id="products">
-  <% @products.each do |p| -%>
+  <% @payment_options.each do |p| -%>
     <tr>
-      <td><%= p.name %></td>
-      <td>$<%= p.price %></td>
-      <td><%= link_to "Buy #{p.name}", new_transaction_path(:product_id => p.id) %></td>
+      <td><%== p.description %></td>
+      <td>$<%= p.amount %></td>
+      <td><%= link_to "Buy for #{p.amount_display}", new_transaction_path(:payment_option_id => p.id) %></td>
     </tr>
   <% end -%>
 </table>
 
 <% if @transactions %>
-  <h1>Transactions</h1>
+  <h3>Transactions</h1>
   <table id="transactions">
     <%= @transactions.each do |t| -%>
       <tr>
