@@ -11,6 +11,6 @@
     <%= render 'preorder/header' %>
     <%= yield %>
     <%= render 'preorder/footer' %>
-    <%= debug params %>
+    <%= if Rails.env.development? debug params : '' %>
   </body>
 </html>
