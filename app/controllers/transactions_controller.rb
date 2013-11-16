@@ -15,11 +15,24 @@ class TransactionsController < ApplicationController
   def confirm
     @result = Braintree::TransparentRedirect.confirm(request.query_string)
 
+    @payment_option = PaymentOption.find(params[:payment_option_id])
+
     if @result.success?
+
+      #Here goes  updating the progressbar using Order.prefill and Order.postfill 
+     @order = Order.prefill!(
+        :name => Settings.product_name, 
+        :price => @payment_option.amount, 
+        :user_id => current_user.id, 
+        :payment_option => @payment_option
+      )
+     
+     @order.token = @result.transaction.id
+     @order.save!
+
       render :confirm
     else
       #@product = Product.find(params[:product_id])
-      @payment_option = PaymentOption.find(params[:payment_option_id])
       current_user.with_braintree_data!
       @credit_card = current_user.default_credit_card
       render :new
