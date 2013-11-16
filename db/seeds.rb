@@ -25,7 +25,7 @@ PaymentOption.create(
             description: '<strong>Package 1: </strong>You receive our print edition',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: 250
+            limit: 2
         },
         {
             amount: 125.00,
