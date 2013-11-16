@@ -18,4 +18,4 @@
     <%= render 'preorder/checkout/sidebar' %>
   </div>
 </div>
-<%= debug @result.transaction %>
+<%= Rails.env.development? ? (debug @result.transaction):'' %>
