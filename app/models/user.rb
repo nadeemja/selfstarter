@@ -10,7 +10,18 @@ class User < ActiveRecord::Base
   attr_accessor *FIELDS
   attr_accessible :email, :password, :password_confirmation, :remember_me, :braintree_customer_id
   
+
   has_many :orders
+
+  def self.backers
+    User
+      .joins("left join orders on orders.user_id = users.id")
+      .where("token != ? OR token != ?", "", nil)
+      .uniq
+      .count
+      
+  end
+
   def has_payment_info?
     !!braintree_customer_id
   end

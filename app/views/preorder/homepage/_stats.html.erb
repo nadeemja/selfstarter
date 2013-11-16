@@ -20,6 +20,10 @@
   <div id="backing">
     <ul>
       <li class="stats" id="backers">
+        <%= number_with_delimiter User.backers, :delimiter => "," %>
+        <span>backers</span>
+      </li>
+      <li class="stats" id="reservations">
         <%= number_with_delimiter Order.backers, :delimiter => "," %>
         <span><%= Settings.primary_stat %></span>
       </li>

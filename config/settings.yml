@@ -58,7 +58,7 @@ charge_limit: 25.00
 # Stats settings
 
 # On Lockitron, it's "backers"
-primary_stat: "backers"
+primary_stat: "reservations"
 # This'll show up in the tweet as, "I'm backer number ..."
 primary_stat_verb: 'backer'
 
