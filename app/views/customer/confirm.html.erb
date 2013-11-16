@@ -1,4 +1,18 @@
-<h3>Payment Info Confirmation</h3>
+
+<div class="gray_background">
+  <div class="wrapper clearfix">
+    <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
+      <h3>Check out</h3>
+      <p>
+        All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
+        <br />
+        <br />
+        <p>
+          
+          <%= link_to 'Continue to checkout', new_transaction_path(session[:payment_option_id]) %>
+
+        </p>
+       <h3>Payment Info Confirmation</h3>
 <p>Your payment information was successfully saved.</p>
 <dl>
   <dt>First Name</dt>
@@ -12,3 +26,7 @@
     <dd><%= cc.masked_number %></dd>
   <% end %>
 </dl>
+    </div>
+    <%= render 'preorder/checkout/sidebar' %>
+  </div>
+</div>

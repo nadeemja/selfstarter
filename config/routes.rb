@@ -9,6 +9,8 @@ Selfstarter::Application.routes.draw do
 
   devise_for :users
 
+  # match 'customer/new(/:payment_option_id)' => 'customer#new', :as => :new_customer
+
   resources :customer, :only => [:new, :edit]
   resources :credit_card_info, :only => [:edit]
 

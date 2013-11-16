@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Product.create(:name => 'FooBar', :price => 100)
 
+User.create(:email => 'nadqur@gmail.com', :password => 'letmein123')
+
 PaymentOption.create(
     [
         {

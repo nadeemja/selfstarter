@@ -8,6 +8,7 @@ class TransactionsController < ApplicationController
       #@product = Product.find(params[:product_id])
       @payment_option = PaymentOption.find(params[:payment_option_id])
     else
+      session[:payment_option_id] = params[:payment_option_id]
       redirect_to new_customer_path
     end
   end
