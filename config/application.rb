@@ -17,11 +17,13 @@ module Selfstarter
     config.active_record.whitelist_attributes = true
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.debug = true
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     # --- Standard Rails Config ---
 
     config.middleware.use "BraintreeInterceptor" if Rails.env.test?
-  
+    
+    RPXNow.api_key = "d9fb5168c26f7b1506dfca214a298cb5e73ca5ad"
   end
 end

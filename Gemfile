@@ -41,3 +41,6 @@ gem 'amazon_flex_pay'
 
 # Configuration File
 gem 'rails_config'
+
+# Social Login
+gem "devise_rpx_connectable"

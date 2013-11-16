@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107010733) do
+ActiveRecord::Schema.define(:version => 20131116173643) do
 
   create_table "orders", :id => false, :force => true do |t|
     t.string   "token"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20130107010733) do
     t.datetime "updated_at",     :null => false
   end
 
-create_table "products", :force => true do |t|
+  create_table "products", :force => true do |t|
     t.string   "name"
     t.float    "price"
     t.datetime "created_at", :null => false
@@ -69,8 +69,10 @@ create_table "products", :force => true do |t|
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
     t.text     "braintree_customer_id"
+    t.string   "rpx_identifier"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
 end
