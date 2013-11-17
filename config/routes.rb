@@ -1,4 +1,5 @@
 Selfstarter::Application.routes.draw do
+
   root :to => 'preorder#index'
   match '/preorder'               => 'preorder#index'
   get 'preorder/checkout'
@@ -7,6 +8,8 @@ Selfstarter::Application.routes.draw do
   match '/preorder/prefill'       => 'preorder#prefill'
   match '/preorder/postfill'      => 'preorder#postfill'
 
+  
+  resources :user
   devise_for :users
 
   # match 'customer/new(/:payment_option_id)' => 'customer#new', :as => :new_customer
