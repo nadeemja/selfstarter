@@ -8,8 +8,8 @@ Selfstarter::Application.routes.draw do
   match '/preorder/prefill'       => 'preorder#prefill'
   match '/preorder/postfill'      => 'preorder#postfill'
 
-  
-  resources :user
+
+  resources :users
   devise_for :users
 
   # match 'customer/new(/:payment_option_id)' => 'customer#new', :as => :new_customer
