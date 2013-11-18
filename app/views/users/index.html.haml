@@ -1,0 +1,17 @@
+.gray_background
+
+  .wrapper.clearfix
+
+    %div{class: "main_content #{"payment_options" if Settings.use_payment_options}"}
+
+      %h3= @user.first_name + ' ' + @user.last_name
+
+      %h4 Your Reservations
+
+      - @user.orders.each do |order|
+        %p= PaymentOption.find(order.payment_option_id).description.html_safe
+
+
+
+
+    = render 'preorder/checkout/sidebar'

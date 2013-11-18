@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116173643) do
+ActiveRecord::Schema.define(:version => 20131117115325) do
 
   create_table "orders", :id => false, :force => true do |t|
     t.string   "token"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20131116173643) do
     t.datetime "updated_at",                                            :null => false
     t.text     "braintree_customer_id"
     t.string   "rpx_identifier"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

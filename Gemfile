@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.15'
 gem 'json', '~> 1.7.7'
 gem "devise"
 gem 'execjs'
 gem 'therubyracer'
 gem 'braintree'
 gem 'mysql2'
+gem "haml-rails"
 
 group :development do
   gem 'sqlite3'
@@ -34,7 +35,7 @@ group :development, :test do
 end
 
 # jQuery
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.3.0" 
 
 # Kickstarter's awesome Amazon Flexible Payments gem
 gem 'amazon_flex_pay'
