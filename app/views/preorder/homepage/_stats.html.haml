@@ -1,0 +1,52 @@
+.wrapper.clearfix
+  #video
+    - if Settings.use_video_placeholder
+      #video_image
+        %img{alt: "video_place_holder", height: "385px", src: "/assets/video_placeholder.png", width: "512px"}/
+      #player.hidden{style: "display: none;"}
+        %object{height: "385", width: "512"}
+          %param{name: "movie", value: "#{Settings.video_embed_url}?autohide=1&showinfo=0&rel=0&autoplay=1"}/
+          %param{name: "allowFullScreen", value: "true"}/
+          %param{name: "allowscriptaccess", value: "always"}/
+          %embed{allowfullscreen: "true", allowscriptaccess: "always", height: "385", src: "#{Settings.video_embed_url}?autohide=1&showinfo=0&rel=0&autoplay=1", type: "application/x-shockwave-flash", width: "512"}
+    - else
+      %iframe{height: "385", src: video_url, width: "512"}
+  #backing
+    %ul
+      %li#backers.stats
+        = number_with_delimiter User.backers, :delimiter => ","
+        %span backers
+      %li#reservations.stats
+        = number_with_delimiter Order.backers, :delimiter => ","
+        %span= Settings.primary_stat
+      %li.stats
+        = number_to_currency Order.revenue, :precision => 0
+        %span
+          of #{number_to_currency Settings.project_goal.to_f, :precision => 0}
+      - if Settings.expiration_date.present?
+        %li#days.stats
+          = distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "")
+          %span
+            = distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "")
+            left
+      - else
+        %li#days.stats
+          \&#8734;
+          %span days left
+    - if Order.revenue.to_f < Order.goal.to_f
+      #progress_bg.small
+        #progress{style: "width: #{Order.percent}%;"}
+    - else
+      #progress_bg
+        #progress
+        #progress_text
+          = Order.percent
+          \% #{Settings.progress_text}
+    #reserve_container
+      %p#ship_date= Settings.ships
+      %a.blue_button.reserve{href: "/preorder/checkout"}= Settings.call_to_action
+      %p#price= Settings.price_human
+      %p= Settings.dont_give_them_a_reason_to_say_no
+      = like_button
+      = mail_to 'support@yoursite.com', 'Contact Us'
+      = user_signed_in? ? (link_to '/ Your Account', users_path):('')
