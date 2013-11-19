@@ -1,0 +1,17 @@
+.gray_background
+  .wrapper.clearfix
+    %div{class: "main_content #{"payment_options" if Settings.use_payment_options}"}
+      %h3 Receipt
+      %b
+        Transaction #{@result.transaction.id}
+      %dl
+        %dt Amount
+        %dd
+          $#{@result.transaction.amount}
+        %dt Credit Card Charged
+        %dd= @result.transaction.credit_card_details.masked_number
+
+      %p= link_to 'Your Account', users_path
+
+    = render 'preorder/checkout/sidebar'
+= Rails.env.development? ? (debug @result.transaction):''
