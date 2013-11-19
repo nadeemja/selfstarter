@@ -9,8 +9,15 @@
       %h4 Your Reservations
 
       - @user.orders.each do |order|
-        %p= PaymentOption.find(order.payment_option_id).description.html_safe
+        
+        - p = PaymentOption.find(order.payment_option_id)
 
+        %p
+          Receipt
+          = order.token
+        %p
+          = p.description.html_safe
+        %hr
 
 
 
