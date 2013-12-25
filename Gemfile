@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails_12factor', group: :production
 
 gem 'rails', '3.2.15'
 gem 'json', '~> 1.7.7'
@@ -42,3 +43,5 @@ gem 'rails_config'
 
 # Social Login
 gem "devise_rpx_connectable"
+
+ruby '2.0.0'
