@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20131117115325) do
 
   create_table "orders", :id => false, :force => true do |t|
     t.string   "token"
-    t.string   "transaction_id"
+    t.integer   "transaction_id"
     t.string   "address_one"
     t.string   "address_two"
     t.string   "city"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20131117115325) do
     t.string   "status"
     t.string   "number"
     t.string   "uuid"
-    t.string   "user_id"
+    t.integer   "user_id"
     t.decimal  "price"
     t.decimal  "shipping"
     t.string   "tracking_number"
